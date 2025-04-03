@@ -22,7 +22,7 @@ const Search = ({word, setWord, handleSubmit}) => {
                                 />
                             </Col>
                             <Col>
-                                <Button variant="primary" type="submit">Search</Button>
+                                <Button onClick={() => setWord("")} variant="primary" type="submit">Search</Button>
                             </Col>
                         </Form.Group>
                     </Form>
