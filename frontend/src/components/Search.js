@@ -22,11 +22,7 @@ const Search = ({ word, setWord, handleSubmit }) => {
                 />
               </Col>
               <Col>
-                <Button
-                  onClick={() => setWord('')}
-                  variant="primary"
-                  type="submit"
-                >
+                <Button variant="primary" type="submit">
                   Search
                 </Button>
               </Col>
