@@ -8,5 +8,13 @@
     
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
+    },
+    "pylint.enabled": true,
+    "pylint.args": [
+        "--max-line-length=88"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
     }
 }
