@@ -45,8 +45,8 @@ def images():
     """GET/POST endpoint to get images from server and load images to server"""
     if request.method == "GET":
         # read images from the database
-        images = images_collection.find({})
-        return jsonify([img for img in images])
+        image = images_collection.find({})
+        return jsonify([img for img in image])
     if request.method == "POST":
         # add image to the database
         image = request.get_json()
@@ -54,6 +54,19 @@ def images():
         result = images_collection.insert_one(image)
         inserted_id = result.inserted_id
         return {"inserted_id": inserted_id}
+
+
+@app.route("/images/<image_id>", methods=["DELETE"])
+def images_id(image_id):
+    """DELETE endpoint to delete an image by id"""
+    if request.method == "DELETE":
+        # delete image using id from the database
+        result = images_collection.delete_one({"_id": image_id})
+        if not result:
+            return {"error": "server issue has occured, image was not deleted."}, 500
+        if result and not result.deleted_count:
+            return {"error": "image with chosen id does not exist"}, 404
+        return {"deleted_image_id": image_id}
 
 
 if __name__ == "__main__":
